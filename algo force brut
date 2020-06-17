@@ -1,0 +1,172 @@
+// tableau avec tout les caractères 
+$tab=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','t','u','v','w','x','y','z','@','&','1','2','3','4','5','6','7','0','8','9','é','ù','*','$','€','£','+','-','=','²','¤',"'",'µ','^','<','>','?','!','§','s','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','',];
+$boucle=0;
+// Récupération des entrer de l'utilisateur avec un un formulaire 
+$pass=$_POST["pass"];
+$log=$_POST["pseudo"];
+// variable de transition
+$test="";
+
+$stock=[];
+
+//taille du MDP 
+$x=strlen($pass);
+
+if($x>=1)
+{
+	for($i=0;$i<count($tab);$i++)
+	{
+		$test="";
+		$test=$tab[$i];
+	
+		if($test==$pass)
+		{
+			//echo("tu as réussi") ;
+			break;
+		}
+		else
+		{	
+			$boucle++;
+			
+		}
+			 if ($x>=2) 
+				{
+					for ($n=0; $n<count($tab) ; $n++) 
+					{ 
+						$test='';
+						// MDP avec 2
+						$test=$tab[$i].$tab[$n];
+						
+						if($test==$pass)
+						{
+							//echo("tu as réussi") ;
+							break;
+
+						}
+							else
+							{
+								array_push($stock,$test);
+								$boucle++;
+							}
+								 if ($x>=3) 
+								{
+									for ($q=0; $q<count($tab) ; $q++) 
+									{ 
+												$test='';
+												$test=$tab[$i].$tab[$n].$tab[$q];
+												
+												if($test==$pass)
+												{
+													//echo("tu as réussi") ;
+													break;
+												}
+													else
+													{
+														//array_push($stock,$test);
+														$boucle++;
+													}
+														if ($x>=4) 
+														{
+															for ($v=0; $v<count($tab) ; $v++) 
+															{ 
+																		$test='';
+																		$test=$tab[$i].$tab[$n].$tab[$q].$tab[$v];
+																		
+																		if($test==$pass)
+																		{
+																			//echo("tu as réussi") ;
+																			break;
+																		}
+																			else
+																			{
+																				//array_push($stock,$test);
+																				$boucle++;
+																			}
+																				if ($x>=5) 
+																				{
+																					for ($z=0; $z<count($tab) ; $z++) 
+																					{ 
+																								$test='';
+																								$test=$tab[$i].$tab[$n].$tab[$q].$tab[$v].$tab[$z];
+																								
+																								if($test==$pass)
+																								{
+																									//echo("tu as réussi") ;
+																									break;
+																								}
+																									else
+																									{
+																										//array_push($stock,$test);
+																										$boucle++;
+																									}
+																										if ($x>=6) 
+																										{
+																											for ($b=0; $b<count($tab) ; $b++) 
+																											{ 
+																														$test='';
+																														$test=$tab[$i].$tab[$n].$tab[$q].$tab[$v].$tab[$z].$tab[$b];
+																														
+																														if($test==$pass)
+																														{
+																															//echo("tu as réussi") ;
+																															break;
+																														}
+																														else
+																														{
+																															//array_push($stock,$test);
+																															$boucle++;
+																														}
+																													
+																										    }
+															                    						}
+																	                    if($test==$pass)
+																						{
+																							break;
+																						}	
+																							
+																				    }
+									                    						}
+												                    if($test==$pass)
+																	{
+																		break;
+																	}	
+																	
+														    }
+									                    }
+						                    if($test==$pass)
+											{
+												break;
+											}	
+												
+									}
+				                }
+	                    if($test==$pass)
+						{
+							break;
+						}	
+				    }
+				}
+
+		if($test==$pass)
+		{
+			break;
+		}			
+				
+				
+	}
+}
+else
+{
+	$test="n'a pas de caractère";	
+}	
+echo ("Il y a ".count($tab)." nombre de caractère dans mon tableau</br></br>");
+echo ("Le mot de passe de "); 
+
+var_dump($stock);?>
+
+<p style="color:red";> <?php echo $log ?></p>
+
+
+
+
+<p> est <?php echo $pass ?></p> &nbsp <p>mon code a effectué <?php echo $boucle ?>  </p>
